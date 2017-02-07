@@ -12,15 +12,14 @@ const client = new Twitter({
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  client.get('statuses/user_timeline', {screen_name: req.query.q}, function(error, tweets, response) {
-      console.log(tweets);
-      res.send(tweets)
+  client.get('statuses/user_timeline', {screen_name: req.query.q}, function(error, twits, response) {
+      res.send(twits)
   })
 })
 
 router.post('/new-twit', function(req, res, next) {
-  client.post('statuses/update', {status: req.body.twit}, function (error, tweets, response) {
-    res.send(tweets)
+  client.post('statuses/update', {status: req.body.twit}, function (error, twit, response) {
+    res.send(twit)
   })
 })
 
